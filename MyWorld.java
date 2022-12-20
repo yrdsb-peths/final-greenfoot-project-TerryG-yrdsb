@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.List;
 /**
  * Write a description of class MyWorld here.
  * 
@@ -19,5 +19,11 @@ public class MyWorld extends World
         super(600,500, 1);
         Player player = new Player();
         addObject(player,getWidth()/2,getHeight()/2);
+    }
+    
+    public void gameOver()
+    {
+        List object = getObjects(null);
+        removeObjects(object);
     }
 }

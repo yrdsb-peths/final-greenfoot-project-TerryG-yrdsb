@@ -15,6 +15,7 @@ public class Player extends Actor
     
     SimpleTimer bulletCooldown = new SimpleTimer();
     String facing = "";
+    int health = 10;
     public void act()
     {
         if(Greenfoot.isKeyDown("left"))
@@ -38,6 +39,12 @@ public class Player extends Actor
             facing = "down";
         }
         shoot();
+        
+        if(isTouching(BulletEnemy.class))
+        {
+            removeTouching(BulletEnemy.class);
+            health -= 1;
+        }
     }
     
     public void shoot()
