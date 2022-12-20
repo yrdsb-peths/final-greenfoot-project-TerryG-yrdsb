@@ -14,25 +14,25 @@ public class Player extends Actor
      */
     
     SimpleTimer bulletCooldown = new SimpleTimer();
+    String facing = "";
     public void act()
     {
-        String facing = "";
         if(Greenfoot.isKeyDown("left"))
         {
             move(-3);
             facing = "left";
         }
-        if(Greenfoot.isKeyDown("right"))
+        else if(Greenfoot.isKeyDown("right"))
         {
             move(3);
             facing = "right";
         }
-        if(Greenfoot.isKeyDown("up"))
+        else if(Greenfoot.isKeyDown("up"))
         {
             setLocation(getX(), getY()-3);
             facing = "up";
         }
-        if(Greenfoot.isKeyDown("down"))
+        else if(Greenfoot.isKeyDown("down"))
         {
             setLocation(getX(), getY()+3);
             facing = "down";
@@ -52,7 +52,26 @@ public class Player extends Actor
             
             Bullet bullet = new Bullet();
             MyWorld world = (MyWorld) getWorld();
-            world.addObject(bullet,getX(),getY());
+            if(facing.equals("up"))
+            {
+                world.addObject(bullet,getX(),getY());
+                bullet.setRotation(270);
+            }
+            if(facing.equals("down"))
+            {
+                world.addObject(bullet,getX(),getY());
+                bullet.setRotation(90);
+            }
+            if(facing.equals("left"))
+            {
+                world.addObject(bullet,getX(),getY());
+                bullet.setRotation(180);
+            }
+            if(facing.equals("right"))
+            {
+                world.addObject(bullet,getX(),getY());
+                bullet.setRotation(0);
+            }
         }
     }
 }
