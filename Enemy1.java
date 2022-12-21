@@ -38,7 +38,7 @@ public class Enemy1 extends Actor
                 return;
         }
         bulletCooldown.mark();
-        BulletEnemy bullet = new BulletEnemy();
+        BulletShort bullet = new BulletShort();
         MyWorld world = (MyWorld) getWorld();
         
         world.addObject(bullet,getX(),getY());

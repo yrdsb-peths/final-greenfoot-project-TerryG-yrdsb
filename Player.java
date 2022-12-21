@@ -42,10 +42,10 @@ public class Player extends Actor
         shoot();
         
         //doesnt work
-        if(isTouching(BulletEnemy.class))
+        if(isTouching(BulletShort.class))
         {
             health = health - 1;
-            removeTouching(BulletEnemy.class);
+            removeTouching(BulletShort.class);
         }
         if(health == 0)
         {
