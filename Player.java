@@ -15,6 +15,7 @@ public class Player extends Actor
     
     SimpleTimer bulletCooldown = new SimpleTimer();
     String facing = "";
+    Label healthbar;   
     int health = 10;
     public void act()
     {
@@ -40,10 +41,16 @@ public class Player extends Actor
         }
         shoot();
         
+        //doesnt work
         if(isTouching(BulletEnemy.class))
         {
+            health = health - 1;
             removeTouching(BulletEnemy.class);
-            health -= 1;
+        }
+        if(health == 0)
+        {
+            MyWorld world = (MyWorld)getWorld();
+            world.gameOver();
         }
     }
     

@@ -25,5 +25,7 @@ public class MyWorld extends World
     {
         List object = getObjects(null);
         removeObjects(object);
+        Label gameOver = new Label("You Died", 100);
+        addObject(gameOver, 300, 250);
     }
 }
