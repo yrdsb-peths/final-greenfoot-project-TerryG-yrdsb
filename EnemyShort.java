@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Enemy1 extends Actor
+public class EnemyShort extends Actor
 {
     /**
      * Act - do whatever the enemy1 wants to do. This method is called whenever
