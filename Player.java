@@ -12,39 +12,107 @@ public class Player extends Actor
      * Act - do whatever the player wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    GreenfootImage[] walkAnimation= new GreenfootImage[5];
     
     SimpleTimer bulletCooldown = new SimpleTimer();
-    String facing = "";
+    SimpleTimer damageCooldown = new SimpleTimer();
+    SimpleTimer animationTimer = new SimpleTimer();
+    
+    String facing = "right";
+    Label healthbar;   
+    int health = 10;
+    
+    public Player()
+    {
+        for(int i = 0; i < walkAnimation.length; i++)
+        {
+            walkAnimation[i] = new GreenfootImage("images/gunman/gunman" + i +".png");
+            walkAnimation[i].scale(100, 100);
+        }
+
+        animationTimer.mark();
+        //Initial image
+        setImage(walkAnimation[0]);
+    }
+    
+    int imageIndex = 0;
+    public void animatePlayer()
+    {
+        if(animationTimer.millisElapsed()<125)
+        {
+            return;
+        }
+        animationTimer.mark();
+        
+        if(Greenfoot.isKeyDown("right"))
+        {
+            setImage(walkAnimation[imageIndex]);
+            imageIndex = (imageIndex + 1) % walkAnimation.length;
+        }
+        else if(Greenfoot.isKeyDown("left"))
+        {
+            setImage(walkAnimation[imageIndex]);
+            imageIndex = (imageIndex + 1) % walkAnimation.length;
+        }
+        else if(Greenfoot.isKeyDown("up"))
+        {
+            setImage(walkAnimation[imageIndex]);
+            imageIndex = (imageIndex + 1) % walkAnimation.length;
+        }
+        else if(Greenfoot.isKeyDown("down"))
+        {
+            setImage(walkAnimation[imageIndex]);
+            imageIndex = (imageIndex + 1) % walkAnimation.length;
+        }
+        else
+        {
+            setImage(walkAnimation[0]);
+        }
+    }
+    
     public void act()
     {
         if(Greenfoot.isKeyDown("left"))
         {
-            move(-3);
+            setRotation(180);
+            move(3);
             facing = "left";
         }
         else if(Greenfoot.isKeyDown("right"))
         {
+            setRotation(0);
             move(3);
             facing = "right";
         }
         else if(Greenfoot.isKeyDown("up"))
         {
-            setLocation(getX(), getY()-3);
+            setRotation(270);
+            move(3);
             facing = "up";
         }
         else if(Greenfoot.isKeyDown("down"))
         {
-            setLocation(getX(), getY()+3);
+            setRotation(90);
+            move(3);
             facing = "down";
         }
         shoot();
+        isHit();
+        animatePlayer();
+        
+        if(health == 0)
+        {
+            MyWorld world = (MyWorld)getWorld();
+            world.gameOver();
+        }
+        
     }
     
     public void shoot()
     {
         if(Greenfoot.isKeyDown("space"))
         {
-            if(bulletCooldown.millisElapsed() < 1000)
+            if(bulletCooldown.millisElapsed() < 750)
             {
                 return;
             }
@@ -72,6 +140,35 @@ public class Player extends Actor
                 world.addObject(bullet,getX(),getY());
                 bullet.setRotation(0);
             }
+        }
+    }
+    
+    public void isHit()
+    {
+        if(isTouching(BulletShort.class))
+        {
+            health = health - 1;
+            removeTouching(BulletShort.class);
+        }
+        if(isTouching(BulletLong.class))
+        {
+            health = health - 1;
+            removeTouching(BulletLong.class);
+        }
+        if(isTouching(EnemyShort.class))
+        {
+            health = health - 1;
+            setLocation(getX() - 25,getY());
+        }
+        if(isTouching(EnemyLong.class))
+        {
+            health = health - 1;
+            setLocation(getX() - 25,getY());
+        }
+        if(isTouching(EnemyTank.class))
+        {
+            health = health - 1;
+            setLocation(getX() - 25,getY());
         }
     }
 }
