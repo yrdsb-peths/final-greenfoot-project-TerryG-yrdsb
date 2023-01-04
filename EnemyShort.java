@@ -18,6 +18,9 @@ public class EnemyShort extends Actor
     int health = 5;
     public void act()
     {
+        GreenfootImage image = getImage();
+        image.scale(100, 100);
+        setImage(image);
         if(isTouching(Bullet.class))
         {
             health = health - 1;

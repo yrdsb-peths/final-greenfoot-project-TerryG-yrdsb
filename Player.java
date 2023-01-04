@@ -122,22 +122,22 @@ public class Player extends Actor
             MyWorld world = (MyWorld) getWorld();
             if(facing.equals("up"))
             {
-                world.addObject(bullet,getX(),getY());
+                world.addObject(bullet,getX()-20,getY()-35);
                 bullet.setRotation(270);
             }
             if(facing.equals("down"))
             {
-                world.addObject(bullet,getX(),getY());
+                world.addObject(bullet,getX()+20,getY()+35);
                 bullet.setRotation(90);
             }
             if(facing.equals("left"))
             {
-                world.addObject(bullet,getX(),getY());
+                world.addObject(bullet,getX()-35,getY()+20);
                 bullet.setRotation(180);
             }
             if(facing.equals("right"))
             {
-                world.addObject(bullet,getX(),getY());
+                world.addObject(bullet,getX()+35,getY()-20);
                 bullet.setRotation(0);
             }
         }
@@ -158,17 +158,17 @@ public class Player extends Actor
         if(isTouching(EnemyShort.class))
         {
             health = health - 1;
-            setLocation(getX() - 25,getY());
+            move(-50);
         }
         if(isTouching(EnemyLong.class))
         {
             health = health - 1;
-            setLocation(getX() - 25,getY());
+            move(-50);
         }
         if(isTouching(EnemyTank.class))
         {
             health = health - 1;
-            setLocation(getX() - 25,getY());
+            move(-50);
         }
     }
 }
