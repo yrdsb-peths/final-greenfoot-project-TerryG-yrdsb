@@ -12,7 +12,7 @@ public class EnemyTank extends Actor
      * Act - do whatever the EnemyTank wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    int health = 15;
+    int health = 10;
     public void act()
     {
         if(isTouching(Bullet.class))

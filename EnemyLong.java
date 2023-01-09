@@ -17,6 +17,9 @@ public class EnemyLong extends Actor
     int health = 3;
     public void act()
     {
+        GreenfootImage image = getImage();
+        image.scale(120, 100);
+        setImage(image);
         if(isTouching(Bullet.class))
         {
             health = health - 1;
@@ -32,7 +35,7 @@ public class EnemyLong extends Actor
     
     public void shoot()
     {
-        if(bulletCooldown.millisElapsed() < 1000)
+        if(bulletCooldown.millisElapsed() < 2000)
         {
                 return;
         }
