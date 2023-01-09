@@ -15,11 +15,10 @@ public class Player extends Actor
     GreenfootImage[] walkAnimation= new GreenfootImage[5];
     
     SimpleTimer bulletCooldown = new SimpleTimer();
-    SimpleTimer damageCooldown = new SimpleTimer();
     SimpleTimer animationTimer = new SimpleTimer();
     
     String facing = "right";
-    Label healthbar;   
+    
     int health = 10;
     
     public Player()
@@ -96,6 +95,10 @@ public class Player extends Actor
             move(3);
             facing = "down";
         }
+        if(isTouching(Wall.class))
+        {
+            move(-5);
+        }
         shoot();
         isHit();
         animatePlayer();
@@ -170,5 +173,7 @@ public class Player extends Actor
             health = health - 1;
             move(-50);
         }
+        MyWorld world = (MyWorld) getWorld();
+        world.setHealth(health);
     }
 }

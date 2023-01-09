@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class MyWorld extends World
 {
-
+    Label healthbar;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -19,6 +19,8 @@ public class MyWorld extends World
         super(800,500, 1);
         Player player = new Player();
         addObject(player,getWidth()/8,getHeight()/2);
+        healthbar  = new Label("hp:10",50);
+        addObject(healthbar, 60, 25);
     }
     
     public void gameOver()
@@ -26,6 +28,11 @@ public class MyWorld extends World
         List object = getObjects(null);
         removeObjects(object);
         Label gameOver = new Label("You Died", 100);
-        addObject(gameOver, 300, 250);
+        addObject(gameOver, getWidth()/2, getHeight()/2);
+    }
+    
+    public void setHealth(int hp)
+    {
+        healthbar.setValue("hp:"+hp);
     }
 }
