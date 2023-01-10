@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class EnemyTank extends Actor
+public class WallBreakable extends Actor
 {
     /**
      * Act - do whatever the EnemyTank wants to do. This method is called whenever
@@ -19,6 +19,14 @@ public class EnemyTank extends Actor
         {
             health = health - 1;
             removeTouching(Bullet.class);
+        }
+        if(health == 6)
+        {
+            setImage("images/WallBreakable/Break2.png");
+        }
+        if(health == 3)
+        {
+            setImage("images/WallBreakable/Break3.png");
         }
         if(health == 0)
         {

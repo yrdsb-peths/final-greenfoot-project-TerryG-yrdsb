@@ -19,10 +19,13 @@ public class MyWorld extends World
         super(800,500, 1);
         Player player = new Player();
         addObject(player,getWidth()/8,getHeight()/2);
+        EnemyShort enemyShort = new EnemyShort();
+        addObject(enemyShort,getWidth()/8 * 6,getHeight()/2);
+        
         healthbar  = new Label("hp:10",50);
         addObject(healthbar, 60, 25);
     }
-    
+
     public void gameOver()
     {
         List object = getObjects(null);
@@ -30,9 +33,25 @@ public class MyWorld extends World
         Label gameOver = new Label("You Died", 100);
         addObject(gameOver, getWidth()/2, getHeight()/2);
     }
-    
+
     public void setHealth(int hp)
     {
         healthbar.setValue("hp:"+hp);
+    }
+
+    public void setLevel(int level)
+    {
+        if(level == 1)
+        {
+            
+        }
+    }
+    /**
+     * Prepare the world for the start of the program.
+     * That is: create the initial objects and add them to the world.
+     */
+    private void prepare()
+    {
+        
     }
 }

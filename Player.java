@@ -26,7 +26,7 @@ public class Player extends Actor
         for(int i = 0; i < walkAnimation.length; i++)
         {
             walkAnimation[i] = new GreenfootImage("images/gunman/gunman" + i +".png");
-            walkAnimation[i].scale(100, 100);
+            walkAnimation[i].scale(80, 80);
         }
 
         animationTimer.mark();
@@ -99,6 +99,10 @@ public class Player extends Actor
         {
             move(-5);
         }
+        if(isTouching(WallBreakable.class))
+        {
+            move(-5);
+        }
         shoot();
         isHit();
         animatePlayer();
@@ -164,11 +168,6 @@ public class Player extends Actor
             move(-50);
         }
         if(isTouching(EnemyLong.class))
-        {
-            health = health - 1;
-            move(-50);
-        }
-        if(isTouching(EnemyTank.class))
         {
             health = health - 1;
             move(-50);
