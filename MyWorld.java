@@ -9,6 +9,7 @@ import java.util.List;
 public class MyWorld extends World
 {
     Label healthbar;
+    int health;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -17,41 +18,53 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800,500, 1);
-        Player player = new Player();
+        Player player = new Player(10);
         addObject(player,getWidth()/8,getHeight()/2);
         EnemyShort enemyShort = new EnemyShort();
         addObject(enemyShort,getWidth()/8 * 6,getHeight()/2);
-        
-        healthbar  = new Label("hp:10",50);
+
+        healthbar  = new Label(health,50);
         addObject(healthbar, 60, 25);
+        prepare();
     }
 
     public void gameOver()
     {
-        List object = getObjects(null);
-        removeObjects(object);
+        clearAll();
         Label gameOver = new Label("You Died", 100);
         addObject(gameOver, getWidth()/2, getHeight()/2);
     }
 
     public void setHealth(int hp)
     {
+        health = hp;
         healthbar.setValue("hp:"+hp);
     }
 
     public void setLevel(int level)
     {
+        clearAll();
+        healthbar  = new Label(health,50);
+        addObject(healthbar, 60, 25);
+        //set enemy positions
         if(level == 1)
         {
             
         }
     }
+    
+    public void clearAll()
+    {
+        List object = getObjects(null);
+        removeObjects(object);
+    }
+    
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
      */
     private void prepare()
     {
-        
+
     }
 }

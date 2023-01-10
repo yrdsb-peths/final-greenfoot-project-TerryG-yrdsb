@@ -16,12 +16,10 @@ public class Player extends Actor
     
     SimpleTimer bulletCooldown = new SimpleTimer();
     SimpleTimer animationTimer = new SimpleTimer();
-    
+    int health = 10;
     String facing = "right";
     
-    int health = 10;
-    
-    public Player()
+    public Player(int hp)
     {
         for(int i = 0; i < walkAnimation.length; i++)
         {
@@ -32,6 +30,7 @@ public class Player extends Actor
         animationTimer.mark();
         //Initial image
         setImage(walkAnimation[0]);
+        health = hp;
     }
     
     int imageIndex = 0;
@@ -175,4 +174,5 @@ public class Player extends Actor
         MyWorld world = (MyWorld) getWorld();
         world.setHealth(health);
     }
+
 }
