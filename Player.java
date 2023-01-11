@@ -16,22 +16,21 @@ public class Player extends Actor
     
     SimpleTimer bulletCooldown = new SimpleTimer();
     SimpleTimer animationTimer = new SimpleTimer();
-    
+    int health = 10;
     String facing = "right";
     
-    int health = 10;
-    
-    public Player()
+    public Player(int hp)
     {
         for(int i = 0; i < walkAnimation.length; i++)
         {
             walkAnimation[i] = new GreenfootImage("images/gunman/gunman" + i +".png");
-            walkAnimation[i].scale(100, 100);
+            walkAnimation[i].scale(80, 80);
         }
 
         animationTimer.mark();
         //Initial image
         setImage(walkAnimation[0]);
+        health = hp;
     }
     
     int imageIndex = 0;
@@ -96,6 +95,10 @@ public class Player extends Actor
             facing = "down";
         }
         if(isTouching(Wall.class))
+        {
+            move(-5);
+        }
+        if(isTouching(WallBreakable.class))
         {
             move(-5);
         }
@@ -168,12 +171,8 @@ public class Player extends Actor
             health = health - 1;
             move(-50);
         }
-        if(isTouching(EnemyTank.class))
-        {
-            health = health - 1;
-            move(-50);
-        }
         MyWorld world = (MyWorld) getWorld();
         world.setHealth(health);
     }
+
 }

@@ -14,6 +14,6 @@ public class Wall extends Actor
      */
     public void act()
     {
-        // Add your action code here.
+        //Wall doesn't have to do anything
     }
 }

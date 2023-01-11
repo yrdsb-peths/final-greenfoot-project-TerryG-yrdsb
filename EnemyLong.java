@@ -18,7 +18,7 @@ public class EnemyLong extends Actor
     public void act()
     {
         GreenfootImage image = getImage();
-        image.scale(120, 100);
+        image.scale(100, 80);
         setImage(image);
         if(isTouching(Bullet.class))
         {
