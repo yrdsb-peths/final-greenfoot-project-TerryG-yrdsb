@@ -15,6 +15,9 @@ public class Door extends Actor
      */
     public void act()
     {
+        GreenfootImage image = getImage();
+        image.scale(100, 100);
+        setImage(image);
         if(isTouching(Player.class) && Greenfoot.isKeyDown("space"))
         {
             level += 1;

@@ -1,26 +1,26 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class PlayButton here.
+ * Write a description of class Tutorial here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class PlayButton extends Actor
+public class Tutorial extends Actor
 {
     /**
-     * Act - do whatever the PlayButton wants to do. This method is called whenever
+     * Act - do whatever the Tutorial wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()
     {
         GreenfootImage image = getImage();
-        image.scale(225, 150);
+        image.scale(140, 100);
         setImage(image);
         if(isTouching(Pointer.class) && Greenfoot.mouseClicked(null))
         {
             TitleScreen world = new TitleScreen();
-            world.play();
+            world.tutorial();
         }
     }
 }

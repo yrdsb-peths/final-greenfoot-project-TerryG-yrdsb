@@ -23,7 +23,7 @@ public class MyWorld extends World
         EnemyShort enemyShort = new EnemyShort();
         addObject(enemyShort,getWidth()/8 * 6,getHeight()/2);
 
-        healthbar  = new Label(health,50);
+        healthbar  = new Label("hp:"+ health,50);
         addObject(healthbar, 60, 25);
         prepare();
     }
@@ -44,7 +44,7 @@ public class MyWorld extends World
     public void setLevel(int level)
     {
         clearAll();
-        healthbar  = new Label(health,50);
+        healthbar  = new Label("hp:" + health,50);
         addObject(healthbar, 60, 25);
         //set enemy positions
         if(level == 1)
