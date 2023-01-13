@@ -102,6 +102,10 @@ public class Player extends Actor
         {
             move(-5);
         }
+        if(isTouching(Sandbag.class))
+        {
+            move(-5);
+        }
         shoot();
         isHit();
         animatePlayer();

@@ -20,8 +20,10 @@ public class MyWorld extends World
         super(800,500, 1);
         Player player = new Player(10);
         addObject(player,getWidth()/8,getHeight()/2);
-        EnemyShort enemyShort = new EnemyShort();
+        EnemyShort enemyShort = new EnemyShort(0);
         addObject(enemyShort,getWidth()/8 * 6,getHeight()/2);
+        Door door = new Door();
+        addObject(door, getWidth()/8 * 7,getHeight()/2);
 
         healthbar  = new Label("hp:"+ health,50);
         addObject(healthbar, 60, 25);
