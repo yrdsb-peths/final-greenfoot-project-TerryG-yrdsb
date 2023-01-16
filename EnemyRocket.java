@@ -37,7 +37,7 @@ public class EnemyRocket extends Actor
     
     public void shoot()
     {
-        if(bulletCooldown.millisElapsed() < 6000)
+        if(bulletCooldown.millisElapsed() < 8000)
         {
                 return;
         }

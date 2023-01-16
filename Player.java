@@ -115,7 +115,11 @@ public class Player extends Actor
             MyWorld world = (MyWorld)getWorld();
             world.gameOver();
         }
-        
+        if(isTouching(Heal.class) && Greenfoot.isKeyDown("space"))
+        {
+            health = 10; 
+            removeTouching(Heal.class);
+        }
     }
     
     public void shoot()

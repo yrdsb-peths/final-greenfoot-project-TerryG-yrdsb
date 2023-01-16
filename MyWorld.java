@@ -43,9 +43,9 @@ public class MyWorld extends World
         health = hp;
         healthbar.setValue("hp:"+hp);
     }
+    
     public void setBossHealth(int hp)
     {
-        health = hp;
         healthbar.setValue("boss hp:"+hp);
     }
 
@@ -61,7 +61,7 @@ public class MyWorld extends World
      */
     private void prepare()
     {
-        
+
     }
     
     int level;
@@ -71,7 +71,7 @@ public class MyWorld extends World
        clearAll();
        healthbar  = new Label("hp:" + health,50);
        addObject(healthbar, 60, 25);
-       //set enemy positions
+       //creates the levels
        if(level == 1)
        {
             Player player = new Player(health);
@@ -138,6 +138,8 @@ public class MyWorld extends World
        {
            Player player = new Player(health);
            addObject(player,46,460);
+           Door door = new Door();
+            addObject(door,708,389);
            Wall wall = new Wall();
            addObject(wall,200,475);
            Wall wall2 = new Wall();
@@ -207,7 +209,7 @@ public class MyWorld extends World
        }
        if(level == 6)
        {
-            Player player = new Player(10);
+            Player player = new Player(health);
             addObject(player,35,233);
             Door door = new Door();
             addObject(door, getWidth()/8 * 7,getHeight()/2);
@@ -246,6 +248,134 @@ public class MyWorld extends World
             addObject(enemyShort,454,198);
             EnemyShort enemyShort2 = new EnemyShort(0);
             addObject(enemyShort2,455,315);
+       }
+       if(level == 8)
+       {
+            Sandbag sandbag = new Sandbag();
+            addObject(sandbag,186,462);
+            Sandbag sandbag2 = new Sandbag();
+            addObject(sandbag2,186,356);
+            Sandbag sandbag3 = new Sandbag();
+            addObject(sandbag3,185,250);
+            Sandbag sandbag4 = new Sandbag();
+            addObject(sandbag4,184,146);
+            Sandbag sandbag5 = new Sandbag();
+            addObject(sandbag5,350,29);
+            Sandbag sandbag6 = new Sandbag();
+            addObject(sandbag6,352,124);
+            Sandbag sandbag7 = new Sandbag();
+            addObject(sandbag7,352,234);
+            Sandbag sandbag8 = new Sandbag();
+            addObject(sandbag8,353,346);
+            Sandbag sandbag9 = new Sandbag();
+            addObject(sandbag9,496,460);
+            Sandbag sandbag10 = new Sandbag();
+            addObject(sandbag10,495,344);
+            Sandbag sandbag11 = new Sandbag();
+            addObject(sandbag11,494,223);
+            Sandbag sandbag12 = new Sandbag();
+            addObject(sandbag12,641,32);
+            sandbag11.setLocation(545,209);
+            sandbag10.setLocation(542,331);
+            sandbag9.setLocation(550,437);
+            sandbag12.setLocation(677,23);
+            Sandbag sandbag13 = new Sandbag();
+            addObject(sandbag13,678,116);
+            Sandbag sandbag14 = new Sandbag();
+            addObject(sandbag14,681,229);
+            Sandbag sandbag15 = new Sandbag();
+            addObject(sandbag15,687,356);
+            Door door = new Door();
+            addObject(door,754,51);
+            Player player = new Player(health);
+            addObject(player,79,156);
+            BulletHoming bulletHoming = new BulletHoming();
+            addObject(bulletHoming,29,472);
+            BulletHoming bulletHoming2 = new BulletHoming();
+            addObject(bulletHoming2,73,468);
+            BulletHoming bulletHoming3 = new BulletHoming();
+            addObject(bulletHoming3,130,472);
+            BulletHoming bulletHoming4 = new BulletHoming();
+            addObject(bulletHoming4,49,438);
+            BulletHoming bulletHoming5 = new BulletHoming();
+            addObject(bulletHoming5,107,436);
+       }
+       if(level == 9)
+       {
+            Sandbag sandbag = new Sandbag();
+            addObject(sandbag,209,214);
+            Sandbag sandbag2 = new Sandbag();
+            addObject(sandbag2,208,295);
+            Wall wall = new Wall();
+            addObject(wall,186,370);
+            Wall wall2 = new Wall();
+            addObject(wall2,184,136);
+            Player player = new Player(health);
+            addObject(player,73,257);
+            EnemyRocket enemyRocket = new EnemyRocket();
+            addObject(enemyRocket,760,47);
+            EnemyRocket enemyRocket2 = new EnemyRocket();
+            addObject(enemyRocket2,760,450);
+            EnemyLong enemyLong = new EnemyLong(0);
+            addObject(enemyLong,761,158);
+            EnemyLong enemyLong2 = new EnemyLong(0);
+            addObject(enemyLong2,764,343);
+            EnemyLong enemyLong3 = new EnemyLong(315);
+            addObject(enemyLong3,600,30);
+            EnemyLong enemyLong4 = new EnemyLong(45);
+            addObject(enemyLong4,600,460);
+            WallBreakable wallBreakable = new WallBreakable();
+            addObject(wallBreakable,500,26);
+            WallBreakable wallBreakable2 = new WallBreakable();
+            addObject(wallBreakable2,500,468);
+            Sandbag sandbag3 = new Sandbag();
+            addObject(sandbag3,442,147);
+            Sandbag sandbag4 = new Sandbag();
+            addObject(sandbag4,442,363);
+            EnemyShort enemyShort = new EnemyShort(0);
+            addObject(enemyShort,474,362);
+            EnemyShort enemyShort2 = new EnemyShort(0);
+            addObject(enemyShort2,472,146);
+            EnemyShort enemyShort3 = new EnemyShort(0);
+            addObject(enemyShort3,372,252);
+            Wall wall3 = new Wall();
+            addObject(wall3,562,247);
+            EnemyShort enemyShort6 = new EnemyShort(315);
+            addObject(enemyShort6,614,287);
+            EnemyShort enemyShort7 = new EnemyShort(45);
+            addObject(enemyShort7,614,216);
+            Door door = new Door();
+            addObject(door,745,241);
+       }
+       if(level == 10)
+       {
+            Door door = new Door();
+            addObject(door,716,253);
+            Heal heal = new Heal();
+            addObject(heal,401,129);
+            Player player = new Player(health);
+            addObject(player,82,285);
+       }
+       if(level == 11)
+       {
+            Boss boss = new Boss();
+            addObject(boss,30,33);
+            Player player = new Player(10);
+            addObject(player,400,259);
+            Wall wall = new Wall();
+            addObject(wall,199,130);
+            Wall wall2 = new Wall();
+            addObject(wall2,614,130);
+            Wall wall3 = new Wall();
+            addObject(wall3,194,392);
+            Wall wall4 = new Wall();
+            addObject(wall4,627,395);
+       }
+       if(level == 12)
+       {
+            clearAll();
+            Label win = new Label("YOU WIN", 100);
+            addObject(win, getWidth()/2, getHeight()/2);
        }
     }
 }
