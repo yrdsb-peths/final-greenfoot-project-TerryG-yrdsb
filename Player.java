@@ -102,6 +102,10 @@ public class Player extends Actor
         {
             move(-5);
         }
+        if(isTouching(Sandbag.class))
+        {
+            move(-5);
+        }
         shoot();
         isHit();
         animatePlayer();
@@ -151,6 +155,7 @@ public class Player extends Actor
     
     public void isHit()
     {
+        MyWorld world = (MyWorld) getWorld();
         if(isTouching(BulletShort.class))
         {
             health = health - 1;
@@ -160,6 +165,16 @@ public class Player extends Actor
         {
             health = health - 1;
             removeTouching(BulletLong.class);
+        }
+        if(isTouching(BulletBoss.class))
+        {
+            health = health - 1;
+            removeTouching(BulletBoss.class);
+        }
+        if(isTouching(BulletHoming.class))
+        {
+            health = health - 1;
+            removeTouching(BulletHoming.class);
         }
         if(isTouching(EnemyShort.class))
         {
@@ -171,7 +186,11 @@ public class Player extends Actor
             health = health - 1;
             move(-50);
         }
-        MyWorld world = (MyWorld) getWorld();
+        if(isTouching(Boss.class))
+        {
+            health = health - 1;
+            setLocation(world.getWidth()/2,world.getHeight()/2);
+        }
         world.setHealth(health);
     }
 

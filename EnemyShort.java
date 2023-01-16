@@ -16,11 +16,18 @@ public class EnemyShort extends Actor
     SimpleTimer bulletCooldown = new SimpleTimer();
 
     int health = 5;
+    int rotate;
+    public EnemyShort(int degrees)
+    {
+        rotate = degrees;
+    }
+    
     public void act()
     {
         GreenfootImage image = getImage();
         image.scale(80, 80);
         setImage(image);
+        setRotation(rotate);
         if(isTouching(Bullet.class))
         {
             health = health - 1;
@@ -45,6 +52,6 @@ public class EnemyShort extends Actor
         MyWorld world = (MyWorld) getWorld();
         
         world.addObject(bullet,getX(),getY());
-        bullet.setRotation(180);
+        bullet.setRotation(rotate-180);
     }
 }

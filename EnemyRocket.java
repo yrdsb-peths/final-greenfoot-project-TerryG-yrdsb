@@ -1,31 +1,27 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Enemy2 here.
+ * Write a description of class EnemyRocket here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class EnemyLong extends Actor
+public class EnemyRocket extends Actor
 {
     /**
-     * Act - do whatever the Enemy2 wants to do. This method is called whenever
+     * Act - do whatever the EnemyRocket wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    SimpleTimer bulletCooldown = new SimpleTimer();
+    
+        SimpleTimer bulletCooldown = new SimpleTimer();
 
-    int health = 3;
-    int rotate;
-    public EnemyLong(int degrees)
-    {
-        rotate = degrees;
-    }
+    int health = 5;
+    
     public void act()
     {
         GreenfootImage image = getImage();
-        image.scale(100, 80);
+        image.scale(80, 80);
         setImage(image);
-        setRotation(rotate);
         if(isTouching(Bullet.class))
         {
             health = health - 1;
@@ -41,15 +37,14 @@ public class EnemyLong extends Actor
     
     public void shoot()
     {
-        if(bulletCooldown.millisElapsed() < 2000)
+        if(bulletCooldown.millisElapsed() < 6000)
         {
                 return;
         }
         bulletCooldown.mark();
-        BulletLong bullet = new BulletLong();
+        BulletHoming bullet = new BulletHoming();
         MyWorld world = (MyWorld) getWorld();
         
         world.addObject(bullet,getX(),getY());
-        bullet.setRotation(rotate-180);
     }
 }
