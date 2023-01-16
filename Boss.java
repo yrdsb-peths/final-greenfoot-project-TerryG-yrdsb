@@ -32,6 +32,16 @@ public class Boss extends Actor
                 rotate = 0;
             }
         }
+        if(isTouching(Bullet.class))
+        {
+            health = health - 1;
+            removeTouching(Bullet.class);
+            world.setBossHealth(health);
+        }
+        if(health == 0)
+        {
+            world.removeObject(this);
+        }
         shoot();
         if(health < 30)
         {
@@ -41,7 +51,7 @@ public class Boss extends Actor
     
     public void shoot()
     {
-        if(bulletCooldown.millisElapsed() < 500)
+        if(bulletCooldown.millisElapsed() < 750)
         {
                 return;
         }
@@ -49,9 +59,9 @@ public class Boss extends Actor
         BulletBoss bullet = new BulletBoss();
         MyWorld world = (MyWorld) getWorld();
         
-        int x = Greenfoot.getRandomNumber(90);
+        int x = Greenfoot.getRandomNumber(50);
         world.addObject(bullet,getX(),getY());
-        bullet.setRotation(rotate+135-x);
+        bullet.setRotation(rotate+115-x);
     }
     
     public void homingMissle()

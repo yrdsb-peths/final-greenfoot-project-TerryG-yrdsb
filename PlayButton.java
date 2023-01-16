@@ -17,6 +17,11 @@ public class PlayButton extends Actor
         GreenfootImage image = getImage();
         image.scale(225, 150);
         setImage(image);
+        if(isTouching(Pointer.class))
+        {
+            image.scale(250,175);
+            setImage(image);
+        }
         if(isTouching(Pointer.class) && Greenfoot.mouseClicked(null))
         {
             TitleScreen world = new TitleScreen();

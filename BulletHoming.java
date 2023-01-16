@@ -19,7 +19,7 @@ public class BulletHoming extends Actor
         int PlayerX = player.getX();
         int PlayerY = player.getY();
         turnTowards(PlayerX,PlayerY);
-        move(2);
+        move(1);
         if(isTouching(Wall.class))
         {
             MyWorld world = (MyWorld) getWorld();

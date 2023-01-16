@@ -15,7 +15,7 @@ public class Sandbag extends Actor
     public void act()
     {
         GreenfootImage image = getImage();
-        image.scale(40, 120);
+        image.scale(30, 90);
         setImage(image);
     }
 }

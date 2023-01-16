@@ -17,6 +17,11 @@ public class Return extends Actor
         GreenfootImage image = getImage();
         image.scale(140, 100);
         setImage(image);
+        if(isTouching(Pointer.class))
+        {
+            image.scale(175,130);
+            setImage(image);
+        }
         if(isTouching(Pointer.class) && Greenfoot.mouseClicked(null))
         {
             TitleScreen title = new TitleScreen();
