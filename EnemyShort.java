@@ -3,8 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class enemy1 here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Terry) 
+ * @version (Dec 19/22)
  */
 public class EnemyShort extends Actor
 {
@@ -36,11 +36,13 @@ public class EnemyShort extends Actor
         if(health == 0)
         {
             MyWorld world = (MyWorld) getWorld();
+            world.addScore();
             world.removeObject(this);
         }
         shoot();
     }
     
+    //This lets the enemy shoot bullets
     public void shoot()
     {
         if(bulletCooldown.millisElapsed() < 1000)

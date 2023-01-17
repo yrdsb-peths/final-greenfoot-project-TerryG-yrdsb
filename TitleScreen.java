@@ -3,8 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class TitleScreen here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Terry G) 
+ * @version (1/17/2022)
  */
 public class TitleScreen extends World
 {
@@ -23,13 +23,13 @@ public class TitleScreen extends World
         addObject(play,getWidth()/2,getHeight()/2);
         prepare();
     }
-
+    //this sets the world to the game world
     public void play()
     {
         MyWorld game = new MyWorld();
         Greenfoot.setWorld(game);
     }
-    
+    //this sets the world to the instructions world
     public void tutorial()
     {
         Controls tutorial = new Controls();

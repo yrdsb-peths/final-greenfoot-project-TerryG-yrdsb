@@ -1,15 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class EnemyTank here.
+ * Write a description of class WallBreakable here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Terry G) 
+ * @version (1/17/2022)
  */
 public class WallBreakable extends Actor
 {
     /**
-     * Act - do whatever the EnemyTank wants to do. This method is called whenever
+     * Act - do whatever the WallBreakable wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     int health = 10;

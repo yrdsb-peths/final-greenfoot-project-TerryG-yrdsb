@@ -3,8 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class EnemyRocket here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Terry G) 
+ * @version (1/17/2022)
  */
 public class EnemyRocket extends Actor
 {
@@ -30,14 +30,16 @@ public class EnemyRocket extends Actor
         if(health == 0)
         {
             MyWorld world = (MyWorld) getWorld();
+            world.addScore();
             world.removeObject(this);
         }
         shoot();
     }
     
+    //This lets the enemy shoot homing rockets
     public void shoot()
     {
-        if(bulletCooldown.millisElapsed() < 6000)
+        if(bulletCooldown.millisElapsed() < 8000)
         {
                 return;
         }
@@ -45,6 +47,6 @@ public class EnemyRocket extends Actor
         BulletHoming bullet = new BulletHoming();
         MyWorld world = (MyWorld) getWorld();
         
-        world.addObject(bullet,getX(),getY());
+        world.addObject(bullet,getX()-20,getY()-20);
     }
 }
