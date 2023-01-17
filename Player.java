@@ -33,6 +33,7 @@ public class Player extends Actor
         health = hp;
     }
     
+    //This will animate the player but only when walking
     int imageIndex = 0;
     public void animatePlayer()
     {
@@ -94,20 +95,9 @@ public class Player extends Actor
             move(3);
             facing = "down";
         }
-        if(isTouching(Wall.class))
-        {
-            move(-5);
-        }
-        if(isTouching(WallBreakable.class))
-        {
-            move(-5);
-        }
-        if(isTouching(Sandbag.class))
-        {
-            move(-5);
-        }
         shoot();
         isHit();
+        block();
         animatePlayer();
         
         if(health == 0)
@@ -122,6 +112,7 @@ public class Player extends Actor
         }
     }
     
+    //This will allow the player to shoot a bullet when pressing space.
     public void shoot()
     {
         if(Greenfoot.isKeyDown("space"))
@@ -161,6 +152,10 @@ public class Player extends Actor
         }
     }
     
+    /**
+    This will subtract 1 from the players health when hit by a enemy or bullet
+    as well as subtracting it from the healthbar label
+    */
     public void isHit()
     {
         MyWorld world = (MyWorld) getWorld();
@@ -201,5 +196,21 @@ public class Player extends Actor
         }
         world.setHealth(health);
     }
-
+    
+    //This will block the player from walking thround walls and sandbags
+    public void block()
+    {
+        if(isTouching(Wall.class))
+        {
+            move(-5);
+        }
+        if(isTouching(WallBreakable.class))
+        {
+            move(-5);
+        }
+        if(isTouching(Sandbag.class))
+        {
+            move(-5);
+        }
+    }
 }

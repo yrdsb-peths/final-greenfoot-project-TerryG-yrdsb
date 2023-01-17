@@ -3,8 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Boss here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Terry G) 
+ * @version (1/17/2022)
  */
 public class Boss extends Actor
 {
@@ -54,6 +54,7 @@ public class Boss extends Actor
         }
         if(health == 0)
         {
+            world.addScore();
             Door door = new Door();
             world.addObject(door,getX(),getY());
             world.removeObject(this);
@@ -81,6 +82,8 @@ public class Boss extends Actor
         }
         world.setBossHealth(health);
     }
+    
+    //This will animate the boss
     int imageIndex;
     public void animate()
     {
@@ -93,6 +96,7 @@ public class Boss extends Actor
         setImage(walkAnimation[imageIndex]);
         imageIndex = (imageIndex + 1) % walkAnimation.length;
     }
+    //This allows the boss to shoot bullets with small amounts of spread
     public void shoot()
     {
         if(bulletCooldown.millisElapsed() < 750)
@@ -107,7 +111,7 @@ public class Boss extends Actor
         world.addObject(bullet,getX(),getY());
         bullet.setRotation(rotate+100-x);
     }
-    
+    //This allows the boss to shoot homing missles
     public void homingMissle()
     {
         if(bulletCooldown2.millisElapsed() < 15000)
@@ -120,7 +124,7 @@ public class Boss extends Actor
 
         world.addObject(bullet,getX(),getY());
     }
-    
+    //This lets the boss create 4 EnemyLong objects in the four corners of the world
     public void callMinion()
     {
         MyWorld world = (MyWorld) getWorld();

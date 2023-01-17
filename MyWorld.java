@@ -3,13 +3,15 @@ import java.util.List;
 /**
  * Write a description of class MyWorld here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Terry G) 
+ * @version (1/17/2022)
  */
 public class MyWorld extends World
 {
     Label healthbar;
     Label bossBar;
+    Label scoreCount;
+    int score;
     int health;
     int bossHealth;
     /**
@@ -20,17 +22,20 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800,500, 1);
-        Player player = new Player(15);
+        Player player = new Player(20);
         addObject(player,getWidth()/8,getHeight()/2);
         EnemyShort enemyShort = new EnemyShort(0);
         addObject(enemyShort,getWidth()/8 * 6,getHeight()/2);
         Door door = new Door();
         addObject(door, getWidth()/8 * 7,getHeight()/2);
         healthbar  = new Label("hp:"+ health,50);
+        scoreCount = new Label("score:"+score,50);
         addObject(healthbar, 60, 25);
+        addObject(scoreCount, 225,25);
         prepare();
     }
-
+    
+    //removes all actors from world and creates a label that read "gameOver"
     public void gameOver()
     {
         clearAll();
@@ -38,18 +43,27 @@ public class MyWorld extends World
         addObject(gameOver, getWidth()/2, getHeight()/2);
     }
 
+    //This will change the health on the players label
     public void setHealth(int hp)
     {
         health = hp;
         healthbar.setValue("hp:"+hp);
     }
     
+    // This will change the health on the boss label
     public void setBossHealth(int hp)
     {
         bossHealth = hp;
         bossBar.setValue("boss hp:"+hp);
     }
-
+    
+    // this will add a point to the score label.
+    public void addScore()
+    {
+        score += 1;
+        scoreCount.setValue("score:"+score);
+    }
+    // this removes all actors from world
     public void clearAll()
     {
         List object = getObjects(null);
@@ -72,6 +86,8 @@ public class MyWorld extends World
        clearAll();
        healthbar  = new Label("hp:" + health,50);
        bossBar = new Label("boss hp:"+ bossHealth,50);
+       scoreCount = new Label("score:"+score,50);
+
        //creates the levels
        if(level == 1)
        {
@@ -374,6 +390,7 @@ public class MyWorld extends World
             addObject(bossBar, 700, 25);
        }
        addObject(healthbar, 60, 25);
+       addObject(scoreCount, 225, 25);
        if(level == 12)
        {
             clearAll();
