@@ -13,10 +13,10 @@ public class Player extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     GreenfootImage[] walkAnimation= new GreenfootImage[5];
-    
+    GreenfootSound PEW = new GreenfootSound("pew-sound.mp3");
     SimpleTimer bulletCooldown = new SimpleTimer();
     SimpleTimer animationTimer = new SimpleTimer();
-    int health = 10;
+    int health;
     String facing = "right";
     
     public Player(int hp)
@@ -117,7 +117,7 @@ public class Player extends Actor
         }
         if(isTouching(Heal.class) && Greenfoot.isKeyDown("space"))
         {
-            health = 10; 
+            health += 10; 
             removeTouching(Heal.class);
         }
     }
@@ -136,21 +136,25 @@ public class Player extends Actor
             MyWorld world = (MyWorld) getWorld();
             if(facing.equals("up"))
             {
+                PEW.play();
                 world.addObject(bullet,getX()-20,getY()-35);
                 bullet.setRotation(270);
             }
             if(facing.equals("down"))
             {
+                PEW.play();
                 world.addObject(bullet,getX()+20,getY()+35);
                 bullet.setRotation(90);
             }
             if(facing.equals("left"))
             {
+                PEW.play();
                 world.addObject(bullet,getX()-35,getY()+20);
                 bullet.setRotation(180);
             }
             if(facing.equals("right"))
             {
+                PEW.play();
                 world.addObject(bullet,getX()+35,getY()-20);
                 bullet.setRotation(0);
             }

@@ -45,6 +45,6 @@ public class EnemyRocket extends Actor
         BulletHoming bullet = new BulletHoming();
         MyWorld world = (MyWorld) getWorld();
         
-        world.addObject(bullet,getX(),getY());
+        world.addObject(bullet,getX()-20,getY()-20);
     }
 }

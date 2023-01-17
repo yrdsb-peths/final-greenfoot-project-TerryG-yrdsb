@@ -12,17 +12,31 @@ public class Boss extends Actor
      * Act - do whatever the Boss wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    
+    GreenfootImage[] walkAnimation= new GreenfootImage[2];
     SimpleTimer bulletCooldown = new SimpleTimer();
     SimpleTimer bulletCooldown2 = new SimpleTimer();
+    SimpleTimer animationTimer = new SimpleTimer();
     int health = 50;
     int rotate;
     int count = 0;
+    public Boss()
+    {
+        for(int i = 0; i < walkAnimation.length; i++)
+        {
+            walkAnimation[i] = new GreenfootImage("images/Tank/tank" + i +".png");
+            walkAnimation[i].scale(130, 130);
+        }
+
+        setImage(walkAnimation[0]);
+
+    }
+    
     public void act()
     {
         MyWorld world = (MyWorld) getWorld();
         move(2);
-        if(getX() >= world.getWidth()-10 || getY() >= world.getHeight()-10 || getX() <= 10 || getY() <= 10)
+        animate();
+        if(getX() >= world.getWidth()-50 || getY() >= world.getHeight()-50 || getX() <= 50 || getY() <= 50)
         {
             move(-10);
             rotate += 90;
@@ -65,8 +79,20 @@ public class Boss extends Actor
                 count += 1;
             }
         }
+        world.setBossHealth(health);
     }
-    
+    int imageIndex;
+    public void animate()
+    {
+        if(animationTimer.millisElapsed()<125)
+        {
+            return;
+        }
+        animationTimer.mark();
+        
+        setImage(walkAnimation[imageIndex]);
+        imageIndex = (imageIndex + 1) % walkAnimation.length;
+    }
     public void shoot()
     {
         if(bulletCooldown.millisElapsed() < 750)

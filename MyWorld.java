@@ -9,7 +9,9 @@ import java.util.List;
 public class MyWorld extends World
 {
     Label healthbar;
+    Label bossBar;
     int health;
+    int bossHealth;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -18,14 +20,12 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800,500, 1);
-        /**
-        Player player = new Player(10);
+        Player player = new Player(15);
         addObject(player,getWidth()/8,getHeight()/2);
         EnemyShort enemyShort = new EnemyShort(0);
         addObject(enemyShort,getWidth()/8 * 6,getHeight()/2);
         Door door = new Door();
         addObject(door, getWidth()/8 * 7,getHeight()/2);
-        **/
         healthbar  = new Label("hp:"+ health,50);
         addObject(healthbar, 60, 25);
         prepare();
@@ -46,7 +46,8 @@ public class MyWorld extends World
     
     public void setBossHealth(int hp)
     {
-        healthbar.setValue("boss hp:"+hp);
+        bossHealth = hp;
+        bossBar.setValue("boss hp:"+hp);
     }
 
     public void clearAll()
@@ -64,13 +65,13 @@ public class MyWorld extends World
 
     }
     
-    int level;
+    int level = 0;
     public void setLevel()
     {
        level += 1;
        clearAll();
        healthbar  = new Label("hp:" + health,50);
-       addObject(healthbar, 60, 25);
+       bossBar = new Label("boss hp:"+ bossHealth,50);
        //creates the levels
        if(level == 1)
        {
@@ -359,18 +360,20 @@ public class MyWorld extends World
        if(level == 11)
        {
             Boss boss = new Boss();
-            addObject(boss,30,33);
-            Player player = new Player(10);
+            addObject(boss,60,60);
+            Player player = new Player(health);
             addObject(player,400,259);
             Wall wall = new Wall();
-            addObject(wall,199,130);
+            addObject(wall,220,160);
             Wall wall2 = new Wall();
-            addObject(wall2,614,130);
+            addObject(wall2,590,160);
             Wall wall3 = new Wall();
-            addObject(wall3,194,392);
+            addObject(wall3,220,370);
             Wall wall4 = new Wall();
-            addObject(wall4,627,395);
+            addObject(wall4,590,370);
+            addObject(bossBar, 700, 25);
        }
+       addObject(healthbar, 60, 25);
        if(level == 12)
        {
             clearAll();
