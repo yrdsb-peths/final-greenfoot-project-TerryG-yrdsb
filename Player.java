@@ -98,17 +98,13 @@ public class Player extends Actor
         shoot();
         isHit();
         block();
+        heal();
         animatePlayer();
         
         if(health == 0)
         {
             MyWorld world = (MyWorld)getWorld();
             world.gameOver();
-        }
-        if(isTouching(Heal.class) && Greenfoot.isKeyDown("space"))
-        {
-            health += 10; 
-            removeTouching(Heal.class);
         }
     }
     
@@ -194,6 +190,7 @@ public class Player extends Actor
             health = health - 1;
             setLocation(world.getWidth()/2,world.getHeight()/2);
         }
+        
         world.setHealth(health);
     }
     
@@ -211,6 +208,16 @@ public class Player extends Actor
         if(isTouching(Sandbag.class))
         {
             move(-5);
+        }
+    }
+    
+    //This will heal the player by 10 when pressing space on a health kit
+    public void heal()
+    {
+        if(isTouching(Heal.class) && Greenfoot.isKeyDown("space"))
+        {
+            health += 10; 
+            removeTouching(Heal.class);
         }
     }
 }

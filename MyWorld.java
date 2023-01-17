@@ -22,12 +22,13 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800,500, 1);
+        
+        Door door = new Door();
+        addObject(door, getWidth()/8 * 7,getHeight()/2);
         Player player = new Player(20);
         addObject(player,getWidth()/8,getHeight()/2);
         EnemyShort enemyShort = new EnemyShort(0);
         addObject(enemyShort,getWidth()/8 * 6,getHeight()/2);
-        Door door = new Door();
-        addObject(door, getWidth()/8 * 7,getHeight()/2);
         healthbar  = new Label("hp:"+ health,50);
         scoreCount = new Label("score:"+score,50);
         addObject(healthbar, 60, 25);
@@ -91,10 +92,10 @@ public class MyWorld extends World
        //creates the levels
        if(level == 1)
        {
-            Player player = new Player(health);
-            addObject(player,getWidth()/8,getHeight()/2);
             Door door = new Door();
             addObject(door, getWidth()/8 * 7,getHeight()/2);
+            Player player = new Player(health);
+            addObject(player,getWidth()/8,getHeight()/2);
             EnemyLong enemyLong = new EnemyLong(0);
             addObject(enemyLong,761,257);
             Sandbag sandbag = new Sandbag();
@@ -108,6 +109,8 @@ public class MyWorld extends World
        }
        if(level == 2)
        {
+            Door door = new Door();
+            addObject(door,662,249);
             Player player = new Player(health);
             addObject(player,getWidth()/8,getHeight()/2);
             EnemyLong enemyLong = new EnemyLong(0);
@@ -120,15 +123,13 @@ public class MyWorld extends World
             addObject(enemyShort,514,158);
             EnemyShort enemyShort2 = new EnemyShort(0);
             addObject(enemyShort2,516,340);
-            Door door = new Door();
-            addObject(door,662,249);
        }
        if(level == 3)
        {
-            Player player = new Player(health);
-            addObject(player,getWidth()/8,getHeight()/2);
             Door door = new Door();
             addObject(door,700,249);
+            Player player = new Player(health);
+            addObject(player,getWidth()/8,getHeight()/2);
             Wall wall = new Wall();
             addObject(wall,625,240);
             EnemyLong enemyLong = new EnemyLong(0);
@@ -153,10 +154,10 @@ public class MyWorld extends World
        }
        if(level == 4)
        {
+           Door door = new Door();
+           addObject(door,708,389);
            Player player = new Player(health);
            addObject(player,46,460);
-           Door door = new Door();
-            addObject(door,708,389);
            Wall wall = new Wall();
            addObject(wall,200,475);
            Wall wall2 = new Wall();
@@ -202,10 +203,10 @@ public class MyWorld extends World
        }
        if(level == 5)
        {
-            Player player = new Player(health);
-            addObject(player,getWidth()/8,getHeight()/2);
             Door door = new Door();
             addObject(door, getWidth()/8 * 7,getHeight()/2);
+            Player player = new Player(health);
+            addObject(player,getWidth()/8,getHeight()/2);
             EnemyLong enemyLong = new EnemyLong(0);
             addObject(enemyLong,761,257);
             Sandbag sandbag = new Sandbag();
@@ -226,10 +227,10 @@ public class MyWorld extends World
        }
        if(level == 6)
        {
-            Player player = new Player(health);
-            addObject(player,35,233);
             Door door = new Door();
             addObject(door, getWidth()/8 * 7,getHeight()/2);
+            Player player = new Player(health);
+            addObject(player,35,233);
             Wall wall = new Wall();
             addObject(wall,285,252);
             Wall wall2 = new Wall();
@@ -245,10 +246,10 @@ public class MyWorld extends World
        }
        if(level == 7)
        {
-            Player player = new Player(health);
-            addObject(player,59,251);
             Door door = new Door();
             addObject(door, getWidth()/16 * 15,getHeight()/2);
+            Player player = new Player(health);
+            addObject(player,59,251);
             Wall wall = new Wall();
             addObject(wall,231,127);
             Wall wall2 = new Wall();
@@ -268,6 +269,10 @@ public class MyWorld extends World
        }
        if(level == 8)
        {
+            Door door = new Door();
+            addObject(door,754,51);
+            Player player = new Player(health);
+            addObject(player,79,156);
             Sandbag sandbag = new Sandbag();
             addObject(sandbag,186,462);
             Sandbag sandbag2 = new Sandbag();
@@ -302,10 +307,6 @@ public class MyWorld extends World
             addObject(sandbag14,681,229);
             Sandbag sandbag15 = new Sandbag();
             addObject(sandbag15,687,356);
-            Door door = new Door();
-            addObject(door,754,51);
-            Player player = new Player(health);
-            addObject(player,79,156);
             BulletHoming bulletHoming = new BulletHoming();
             addObject(bulletHoming,29,472);
             BulletHoming bulletHoming2 = new BulletHoming();
@@ -327,8 +328,6 @@ public class MyWorld extends World
             addObject(wall,186,370);
             Wall wall2 = new Wall();
             addObject(wall2,184,136);
-            Player player = new Player(health);
-            addObject(player,73,257);
             EnemyRocket enemyRocket = new EnemyRocket();
             addObject(enemyRocket,760,47);
             EnemyRocket enemyRocket2 = new EnemyRocket();
@@ -363,6 +362,8 @@ public class MyWorld extends World
             addObject(enemyShort7,614,216);
             Door door = new Door();
             addObject(door,745,241);
+            Player player = new Player(health);
+            addObject(player,73,257);
        }
        if(level == 10)
        {
