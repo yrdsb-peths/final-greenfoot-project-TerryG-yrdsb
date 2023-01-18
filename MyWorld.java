@@ -320,6 +320,8 @@ public class MyWorld extends World
        }
        if(level == 9)
        {
+            Heal heal = new Heal();
+            addObject(heal,97,190);
             Sandbag sandbag = new Sandbag();
             addObject(sandbag,209,214);
             Sandbag sandbag2 = new Sandbag();
@@ -397,6 +399,20 @@ public class MyWorld extends World
             clearAll();
             Label win = new Label("YOU WIN", 100);
             addObject(win, getWidth()/2, getHeight()/2);
+            if(score == 40)
+            {
+                Label finalScore = new Label("you killed " + score + "/40 enemies",50);
+                Label goodJob = new Label("good job",50);
+                addObject(finalScore,getWidth()/2,getHeight()/6*4);
+                addObject(goodJob, getWidth()/2,getHeight()/6*5);   
+            }
+            if(score < 40)
+            {
+                Label finalScore = new Label("you killed " + score + "/40 enemies",50);
+                Label tryAgain = new Label("can you do better?",50) ;
+                addObject(finalScore,getWidth()/2,getHeight()/6*4);
+                addObject(tryAgain, getWidth()/2,getHeight()/6*5);               
+            }
        }
     }
 }
