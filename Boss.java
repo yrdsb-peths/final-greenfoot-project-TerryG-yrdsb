@@ -52,13 +52,6 @@ public class Boss extends Actor
             removeTouching(Bullet.class);
             world.setBossHealth(health);
         }
-        if(health == 0)
-        {
-            world.addScore();
-            Door door = new Door();
-            world.addObject(door,getX(),getY());
-            world.removeObject(this);
-        }
         shoot();
         if(health < 30)
         {
@@ -79,6 +72,13 @@ public class Boss extends Actor
                 callMinion();
                 count += 1;
             }
+        }
+        if(health == 0)
+        {
+            world.addScore();
+            Door door = new Door();
+            world.addObject(door,getX(),getY());
+            world.removeObject(this);
         }
         world.setBossHealth(health);
     }
